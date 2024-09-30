@@ -1,0 +1,26 @@
+diff --git a/node_modules/@joint/core/src/V/index.mjs b/node_modules/@joint/core/src/V/index.mjs
+index 65e57c9..55137d1 100644
+--- a/node_modules/@joint/core/src/V/index.mjs
++++ b/node_modules/@joint/core/src/V/index.mjs
+@@ -1777,7 +1777,7 @@ const V = (function() {
+         if (!node) return false;
+         node = V.toNode(node);
+         // IE/Edge does not implement SVGGraphicsElement interface, thus check for `getScreenCTM` below
+-        return node instanceof SVGElement && typeof node.getScreenCTM === 'function';
++        return node instanceof SVGGElement && typeof node.getScreenCTM === 'function';
+     };
+ 
+     var svgDocument = V('svg').node;
+diff --git a/node_modules/@joint/core/src/dia/CellView.mjs b/node_modules/@joint/core/src/dia/CellView.mjs
+index 5d3ad6f..adc1651 100644
+--- a/node_modules/@joint/core/src/dia/CellView.mjs
++++ b/node_modules/@joint/core/src/dia/CellView.mjs
+@@ -536,7 +536,7 @@ export const CellView = View.extend({
+     setNodeAttributes: function(node, attrs) {
+ 
+         if (!isEmpty(attrs)) {
+-            if (node instanceof SVGElement) {
++            if (node instanceof SVGGElement) {
+                 V(node).attr(attrs);
+             } else {
+                 $(node).attr(attrs);
